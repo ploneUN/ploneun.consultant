@@ -19,6 +19,8 @@ from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.multilingualbehavior.directives import languageindependent
 
+import p01.vocabulary.country
+
 from ploneun.consultant import MessageFactory as _
 
 
@@ -36,26 +38,43 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             title=u'Brief description of consultant')
 
     photo = NamedBlobImage(
-            title=u'Upload photo.')
+            title=u'Upload photo.',
+            required=False)
 
     email = schema.TextLine(
             title=u'Email address')
 
     phone = schema.TextLine(
             title=u'Phone number',
-            description=u'eg. +61-3-3333-333')
+            description=u'eg. +61-3-3333-333',
+            required=False)
 
     skype = schema.TextLine(
-            title=u'Skype ID')
+            title=u'Skype ID',
+            required=False)
 
     street_address = schema.Text(
-                title=u'Street Address')
+                title=u'Street Address',
+                required=False,)
 
-    # country = 
-    # region =
-    # specialization (Generic)
+    country = schema.Choice(
+            title=_(u'Country'),
+            description=_(u'Please select a country.'),
+            source=p01.vocabulary.country.ISO3166Alpha2CountryVocabulary(None),
+            required=True,
+            missing_value = None,
+            )
+
+    details = RichText(
+            title=u'Details',
+            description=u'Details and notes on consultant.',
+            required=False
+            )
+
+    #region =
+
+
+    # industry (Generic)
+    # job_function
+
     
-
-    
-
-

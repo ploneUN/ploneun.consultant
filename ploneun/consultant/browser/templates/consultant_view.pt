@@ -7,34 +7,51 @@
       i18n:domain="ploneun.consultant">
 <body>
 
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-    
-    Note that we're using Plone 4 macros. Replace them with Plone 3 macros
-    if needed.
-</tal:comment>
-
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
+  <div tal:define="view nocall:view">
 
-    <tal:block repeat="widget view/widgets/values">
-        <div class="field" tal:condition="python:widget.__name__ not in ('IDublinCore.title', 'IDublinCore.description', 'title', 'description',)">
-            <label tal:content="widget/label" />
-            <br />
-            <div tal:content="structure widget/render" />
-        </div>
-    </tal:block>
+    <div class="newsImageContainer" tal:define="photo nocall:context/photo"
+     tal:condition="nocall:photo">
+     <img tal:define="scale context/@@images"
+          tal:replace="structure python: scale.scale('photo', scale='mini').tag()"
+        />
+    </div>
 
-    <fieldset tal:repeat="group view/groups"
-              tal:attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
-        <legend tal:content="group/label" />
-        <div class="field" tal:repeat="widget group/widgets/values">
-            <label tal:content="widget/label" />
-            <br />
-            <div tal:content="structure widget/render" />
-        </div>
-    </fieldset>
+    <div class="eventDetails vcard">
+        <table class="vertical listing" summary="Contact Details">
+            <tbody>
+                <tr class="odd">
+                    <th>Email</th>
+                    <td tal:content="context/email">example@example.org</td>
+                </tr>
+                <tr class="even">
+                    <th>Phone</th>
+                    <td tal:content="context/phone">+35985985</td>
+                </tr>
+                <tr class="odd">
+                    <th>Skype ID</th>
+                    <td tal:content="context/skype">+35985985</td>
+                </tr>
+                <tr class="even">
+                    <th>Street Address</th>
+                    <td tal:content="context/street_address">1 Melrose
+                        Place</td>
+                </tr>
+                 <tr class="odd">
+                    <th>Country</th>
+                    <td tal:content="structure view/w/country/render">Australia</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Details</h3>
+    <div tal:content="structure view/w/details/render">
+        
+    </div>
+
+    <div class="visualClear" />
 
     <fieldset id="folder-listing">
         <legend>Contents</legend>
@@ -42,6 +59,7 @@
             <metal:use_macro use-macro="listing_macro" />
         </tal:block>
     </fieldset>
+  </div>
 
   </metal:content-core>
 </metal:main>
