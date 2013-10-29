@@ -25,6 +25,7 @@
      <element value="plone.app.dexterity.behaviors.metadata.IPublication"/>
      <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
      <element value="plone.app.dexterity.behaviors.metadata.IExcludeFromNavigation"/>
+     <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
    </property>
 
   <!-- View information -->
