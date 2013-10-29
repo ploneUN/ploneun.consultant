@@ -35,6 +35,7 @@ setup(name='ploneun.consultant',
           'plone.multilingualbehavior',
           'plone.app.versioningbehavior',
           'p01.vocabulary.country',
+          'p01.vocabulary.language',
           # -*- Extra requirements: -*-
       ],
       extras_require={

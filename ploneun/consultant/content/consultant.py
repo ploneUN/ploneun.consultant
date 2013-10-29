@@ -21,6 +21,12 @@ from plone.multilingualbehavior.directives import languageindependent
 
 import p01.vocabulary.country
 
+from collective import dexteritytextindexer
+from plone.autoform.interfaces import IFormFieldProvider
+from plone.directives import form
+from zope import schema
+from zope.interface import alsoProvides
+
 from ploneun.consultant import MessageFactory as _
 
 
@@ -31,16 +37,22 @@ class IConsultant(form.Schema, IImageScaleTraversable):
     Consultant content type
     """
 
+    dexteritytextindexer.searchable('title')
     title = schema.TextLine(title=u'Full Name',
                     description=u'Full name of consultant')
 
+    dexteritytextindexer.searchable('description')
     description = schema.Text(
             title=u'Brief description of consultant')
+
+    dob = schema.Date(
+            title=u'Date of Birth')
 
     photo = NamedBlobImage(
             title=u'Upload photo.',
             required=False)
 
+    dexteritytextindexer.searchable('email')
     email = schema.TextLine(
             title=u'Email address')
 
@@ -53,6 +65,7 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             title=u'Skype ID',
             required=False)
 
+    dexteritytextindexer.searchable('street_address')
     street_address = schema.Text(
                 title=u'Street Address',
                 required=False,)
@@ -65,16 +78,29 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             missing_value = None,
             )
 
+    languages = schema.List(
+            title=u'Languages',
+            description=u'Languages spoken & written',
+            value_type=schema.Choice(
+                source=p01.vocabulary.language.ISO639Alpha2LanguageVocabulary(None),
+                ),
+            required=True
+            )
+
+    years_experience = schema.Int(
+            title=u'Years of Experience')
+
+    dexteritytextindexer.searchable('details')
     details = RichText(
             title=u'Details',
-            description=u'Details and notes on consultant.',
+            description=u'Details and notes on consultant such as work' 
+            ' experience.',
             required=False
             )
 
     #region =
 
-
     # industry (Generic)
     # job_function
 
-    
+alsoProvides(IConsultant, IFormFieldProvider)

@@ -11,14 +11,23 @@
   <metal:content-core define-macro="content-core">
   <div tal:define="view nocall:view">
 
-    <div class="newsImageContainer" tal:define="photo nocall:context/photo"
+    <div tal:define="photo nocall:context/photo"
      tal:condition="nocall:photo">
      <img tal:define="scale context/@@images"
           tal:replace="structure python: scale.scale('photo', scale='mini').tag()"
         />
     </div>
 
-    <div class="eventDetails vcard">
+    <h3>Date of Birth</h3>
+    <p tal:content="context/dob"></p>
+
+    <h3>Years of Experience</h3>
+    <p tal:content="context/years_experience"></p>
+
+    <h3>Languages Spoken</h3>
+    <p tal:content="structure view/w/languages/render"></p>
+
+    <h3>Contact Information</h3>
         <table class="vertical listing" summary="Contact Details">
             <tbody>
                 <tr class="odd">
@@ -44,14 +53,13 @@
                 </tr>
             </tbody>
         </table>
-    </div>
 
     <h3>Details</h3>
     <div tal:content="structure view/w/details/render">
         
     </div>
 
-    <div class="visualClear" />
+    <div class="visualClear"></div>
 
     <fieldset id="folder-listing">
         <legend>Contents</legend>
