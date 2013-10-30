@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+
+    <index name="ploneun_dob" meta_type="DateIndex">
+        <indexed_attr value="ploneun_dob"/>
+    </index>
+    <column value="ploneun_dob"/>
+
+    <index name="ploneun_country" meta_type="FieldIndex">
+        <indexed_attr value="ploneun_country"/>
+    </index>
+    <column value="ploneun_country"/>
+
+    <index name="ploneun_languages" meta_type="KeywordIndex">
+        <indexed_attr value="ploneun_languages"/>
+    </index>
+    <column value="plone_languages"/>
+
+    <index name="ploneun_years_experience" meta_type="FieldIndex">
+        <indexed_attr value="ploneun_years_experience"/>
+    </index>
+    <column value="ploneun_years_experience"/>
+</object>

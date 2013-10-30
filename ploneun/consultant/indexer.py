@@ -1,4 +1,5 @@
 from plone.indexer import indexer
+from DateTime import DateTime
 from collective import dexteritytextindexer
 from ploneun.consultant.content.consultant import IConsultant
 import p01.vocabulary.country
@@ -32,3 +33,31 @@ class CountryIndexer(grok.Adapter):
 
     def __call__(self):
         return self.country() + ' ' + self.language()
+
+@indexer(IConsultant)
+def dobIndexer(obj):
+    if obj.dob is None:
+        return None
+    return DateTime(obj.dob.isoformat())
+grok.global_adapter(dobIndexer, name='ploneun_dob')
+
+@indexer(IConsultant)
+def ploneUNCountryIndexer(obj):
+    if obj.country is None:
+        return None
+    return obj.country
+grok.global_adapter(ploneUNCountryIndexer, name='ploneun_country')
+
+@indexer(IConsultant)
+def ploneUNLanguageIndexer(obj):
+    if obj.languages is None:
+        return None
+    return obj.languages
+grok.global_adapter(ploneUNLanguageIndexer, name='ploneun_languages')
+
+@indexer(IConsultant)
+def ploneUNExperience(obj):
+    if obj.years_experience is None:
+        return None
+    return obj.years_experience
+grok.global_adapter(ploneUNExperience, name='ploneun_years_experience')
