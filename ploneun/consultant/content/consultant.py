@@ -19,8 +19,6 @@ from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.multilingualbehavior.directives import languageindependent
 
-import p01.vocabulary.country
-
 from collective import dexteritytextindexer
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.directives import form
@@ -72,17 +70,37 @@ class IConsultant(form.Schema, IImageScaleTraversable):
 
     country = schema.Choice(
             title=_(u'Country'),
-            description=_(u'Please select a country.'),
-            source=p01.vocabulary.country.ISO3166Alpha2CountryVocabulary(None),
+            description=_(u'Please select a country consultant is'
+            ' based in.'),
+            vocabulary='ploneun.consultant.country',
             required=True,
             missing_value = None,
             )
+
+    themes = schema.List(
+            title=u'Thematic Areas',
+            description=u'Expertise and experience in the following '
+            'thematic work areas.',
+            value_type=schema.Choice(
+                vocabulary='ploneun.consultant.themes'),
+            required=False,
+            missing_value = None,
+            )
+
+    functions = schema.List(
+            title=u'Job Functions',
+            value_type=schema.Choice(
+                vocabulary='ploneun.consultant.function'),
+            required=False,
+            missing_value = None,
+            )
+
 
     languages = schema.List(
             title=u'Languages',
             description=u'Languages spoken & written',
             value_type=schema.Choice(
-                source=p01.vocabulary.language.ISO639Alpha2LanguageVocabulary(None),
+                vocabulary='ploneun.consultant.languages'
                 ),
             required=True
             )

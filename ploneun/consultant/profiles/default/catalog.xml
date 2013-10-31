@@ -16,6 +16,16 @@
     </index>
     <column value="plone_languages"/>
 
+    <index name="ploneun_themes" meta_type="KeywordIndex">
+        <indexed_attr value="ploneun_themes"/>
+    </index>
+    <column value="plone_themes"/>
+
+    <index name="ploneun_functions" meta_type="KeywordIndex">
+        <indexed_attr value="ploneun_functions"/>
+    </index>
+    <column value="plone_functions"/>
+
     <index name="ploneun_years_experience" meta_type="FieldIndex">
         <indexed_attr value="ploneun_years_experience"/>
     </index>

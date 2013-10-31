@@ -21,6 +21,12 @@
     <h3>Date of Birth</h3>
     <p tal:content="context/dob"></p>
 
+    <h3>Thematic Area(s) of Expertise</h3>
+    <p tal:content="structure view/w/themes/render"></p>
+
+    <h3>Job Functions</h3>
+    <p tal:content="structure view/w/functions/render"></p>
+
     <h3>Years of Experience</h3>
     <p tal:content="context/years_experience"></p>
 

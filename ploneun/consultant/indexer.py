@@ -56,6 +56,21 @@ def ploneUNLanguageIndexer(obj):
 grok.global_adapter(ploneUNLanguageIndexer, name='ploneun_languages')
 
 @indexer(IConsultant)
+def ploneUNThemeIndexer(obj):
+    if obj.themes is None:
+        return None
+    return obj.themes
+grok.global_adapter(ploneUNThemeIndexer, name='ploneun_themes')
+
+@indexer(IConsultant)
+def ploneUNFunctionIndexer(obj):
+    if obj.functions is None:
+        return None
+    return obj.functions
+grok.global_adapter(ploneUNThemeIndexer, name='ploneun_functions')
+
+
+@indexer(IConsultant)
 def ploneUNExperience(obj):
     if obj.years_experience is None:
         return None
