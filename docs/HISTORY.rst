@@ -7,8 +7,8 @@ Changelog
  - Initial content type and template
  - Full text index all fields
 
-0.2.1 (unreleased)
-----------------
+0.2.1 (2013-11-01)
+------------------
 
 - Fix typo for job function indexer.
 
