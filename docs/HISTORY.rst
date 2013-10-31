@@ -7,6 +7,12 @@ Changelog
  - Initial content type and template
  - Full text index all fields
 
+0.2.2 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
 0.2.1 (2013-11-01)
 ------------------
 
