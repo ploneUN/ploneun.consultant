@@ -67,7 +67,7 @@ def ploneUNFunctionIndexer(obj):
     if obj.functions is None:
         return None
     return obj.functions
-grok.global_adapter(ploneUNThemeIndexer, name='ploneun_functions')
+grok.global_adapter(ploneUNFunctionIndexer, name='ploneun_functions')
 
 
 @indexer(IConsultant)
