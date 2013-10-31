@@ -10,7 +10,7 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add country, job function and thematic vocabulary and fields
 
 
 0.1 (2013-10-31)
