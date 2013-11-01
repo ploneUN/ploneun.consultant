@@ -46,6 +46,11 @@ class IConsultant(form.Schema, IImageScaleTraversable):
     dob = schema.Date(
             title=u'Date of Birth')
 
+    gender = schema.Choice(
+            title=u'Gender',
+            vocabulary = 'ploneun.consultant.gender'
+            )
+
     photo = NamedBlobImage(
             title=u'Upload photo.',
             required=False)

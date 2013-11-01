@@ -69,6 +69,13 @@ def ploneUNFunctionIndexer(obj):
     return obj.functions
 grok.global_adapter(ploneUNFunctionIndexer, name='ploneun_functions')
 
+@indexer(IConsultant)
+def ploneUNGenderIndexer(obj):
+    if obj.gender is None:
+        return None
+    return obj.gender
+grok.global_adapter(ploneUNGenderIndexer, name='ploneun_gender')
+
 
 @indexer(IConsultant)
 def ploneUNExperience(obj):

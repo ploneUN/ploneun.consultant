@@ -11,6 +11,11 @@
     </index>
     <column value="ploneun_country"/>
 
+    <index name="ploneun_gender" meta_type="FieldIndex">
+        <indexed_attr value="ploneun_gender"/>
+    </index>
+    <column value="ploneun_gender"/>
+
     <index name="ploneun_languages" meta_type="KeywordIndex">
         <indexed_attr value="ploneun_languages"/>
     </index>

@@ -21,6 +21,9 @@
     <h3>Date of Birth</h3>
     <p tal:content="context/dob"></p>
 
+    <h3>Gender</h3>
+    <p tal:content="structure view/w/gender/render"></p>
+
     <h3>Thematic Area(s) of Expertise</h3>
     <p tal:content="structure view/w/themes/render"></p>
 

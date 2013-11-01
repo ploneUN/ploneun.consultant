@@ -20,11 +20,9 @@
   <property name="schema">ploneun.consultant.content.consultant.IConsultant</property> 
   <property name="klass">plone.dexterity.content.Container</property>
   <property name="behaviors">
-     <element value="plone.app.content.interfaces.IReindexOnModify" />
      <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
      <element value="plone.app.dexterity.behaviors.metadata.IPublication"/>
      <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
-     <element value="plone.app.dexterity.behaviors.metadata.IExcludeFromNavigation"/>
      <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
    </property>
 
