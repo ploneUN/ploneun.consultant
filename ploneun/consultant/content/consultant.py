@@ -82,16 +82,6 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             missing_value = None,
             )
 
-    themes = schema.List(
-            title=u'Thematic Areas',
-            description=u'Expertise and experience in the following '
-            'thematic work areas.',
-            value_type=schema.Choice(
-                vocabulary='ploneun.consultant.themes'),
-            required=False,
-            missing_value = None,
-            )
-
     functions = schema.List(
             title=u'Job Functions',
             value_type=schema.Choice(

@@ -15,7 +15,7 @@ class Function(grok.GlobalUtility):
          u'Acounting/Auditing',
         ),
         (
-         'adminstrative',
+         'administrative',
          u'Administrative',
         ),
         (

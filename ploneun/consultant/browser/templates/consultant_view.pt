@@ -18,47 +18,17 @@
         />
     </div>
 
-    <h3>Date of Birth</h3>
-    <p tal:content="context/dob"></p>
-
-    <h3>Gender</h3>
-    <p tal:content="structure view/w/gender/render"></p>
-
-    <h3>Thematic Area(s) of Expertise</h3>
-    <p tal:content="structure view/w/themes/render"></p>
-
-    <h3>Job Functions</h3>
-    <p tal:content="structure view/w/functions/render"></p>
-
-    <h3>Years of Experience</h3>
-    <p tal:content="context/years_experience"></p>
-
-    <h3>Languages Spoken</h3>
-    <p tal:content="structure view/w/languages/render"></p>
+    <tal:block repeat="field view/detail_fields">
+        <h3 tal:content="field/title">Date of Birth</h3>
+        <div tal:content="structure field/render"></div>
+    </tal:block>
 
     <h3>Contact Information</h3>
         <table class="vertical listing" summary="Contact Details">
             <tbody>
-                <tr class="odd">
-                    <th>Email</th>
-                    <td tal:content="context/email">example@example.org</td>
-                </tr>
-                <tr class="even">
-                    <th>Phone</th>
-                    <td tal:content="context/phone">+35985985</td>
-                </tr>
-                <tr class="odd">
-                    <th>Skype ID</th>
-                    <td tal:content="context/skype">+35985985</td>
-                </tr>
-                <tr class="even">
-                    <th>Street Address</th>
-                    <td tal:content="context/street_address">1 Melrose
-                        Place</td>
-                </tr>
-                 <tr class="odd">
-                    <th>Country</th>
-                    <td tal:content="structure view/w/country/render">Australia</td>
+                <tr tal:repeat="field view/contact_fields">
+                    <th tal:content="field/title"></th>
+                    <td tal:content="structure field/render"></td>
                 </tr>
             </tbody>
         </table>
