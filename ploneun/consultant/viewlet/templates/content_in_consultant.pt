@@ -1,0 +1,11 @@
+<div id="ploneun-consultant-content_in_consultant"
+    tal:condition="viewlet/available">
+   <dl class="portalMessage info">
+            <dt>Info</dt>
+            <dd>This file is attached to Consultant : 
+                <span tal:define="consultant viewlet/consultant"
+                    tal:content="consultant/Title">
+                </span>
+            </dd>
+    </dl> 
+</div>
