@@ -74,7 +74,7 @@
                      width thumbnail/width;
                      height thumbnail/height"/>
 
-    <img class="consultant-image" tal:condition="not:thumbnail" src="http://kulll:8080/ksp/++resource++ploneun.consultant/none.jpg"/>
+    <img class="consultant-image" tal:condition="not:thumbnail" src="++resource++ploneun.consultant/none.jpg"/>
 
     </tal:block>
 
