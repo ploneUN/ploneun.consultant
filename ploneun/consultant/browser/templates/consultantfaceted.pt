@@ -63,7 +63,7 @@
                                    item_samedate python: (item_end - item_start &lt; 1) if item_type == 'Event' else False">
             <metal:block define-slot="entry">
             <tal:block define="consultantview nocall:context/@@consultantfaceted">
-<div class="consultant-box" tal:condition="exists:item_obj/@@images/photo">
+<div class="consultant-box">
     
     <tal:block tal:define="scales item_obj/@@images;
     thumbnail python: scales.scale('photo', width=144, height=128, direction='down')">
@@ -96,6 +96,8 @@
             </tal:block>
             </tal:entry>
         </div>
+
+        <div class="visualClear"></div>
 
         <div metal:use-macro="context/batch_macros/macros/navigation" />
 
