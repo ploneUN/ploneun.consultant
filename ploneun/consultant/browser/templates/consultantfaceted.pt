@@ -74,7 +74,8 @@
                      width thumbnail/width;
                      height thumbnail/height"/>
 
-    <img class="consultant-image" tal:condition="not:thumbnail" src="++resource++ploneun.consultant/none.jpg"/>
+     <img class="consultant-image" tal:condition="not:thumbnail" 
+       tal:attributes="src string:${context/portal_url}/++resource++ploneun.consultant/none.jpg"/>
 
     </tal:block>
 
