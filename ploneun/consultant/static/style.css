@@ -1,0 +1,45 @@
+/* style.css */
+
+.consultant-image {
+
+    margin-top: 12px;
+
+}
+
+.consultant-box {
+       float: left;
+    position:relative;
+    overflow: hidden;
+    height: 250px;
+    width: 143px;
+    margin: 0em;
+    padding: 0px 6px 0px 9px;
+    text-align: center;
+    background-image: url('polaroid-single.png');
+    background-repeat: no-repeat; 
+
+}
+.consultant-title {
+    
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom:5px;
+    
+}
+
+.consultant-description {
+    
+    line-height: 1.2em;
+    text-align: left;
+    margin: 0px 10px 5px 10px;
+    height: 5em;
+   overflow: hidden; 
+
+
+}
+#faceted-results div.consultant-title a {
+    color: #000;
+    border: none;
+}
