@@ -2,6 +2,8 @@ from five import grok
 from plone.directives import dexterity, form
 from ploneun.consultant.content.consultant import IConsultant
 from ploneun.consultant.vocabulary import resolve_value
+from AccessControl import getSecurityManager
+from Products.CMFCore import permissions
 grok.templatedir('templates')
 
 class Index(dexterity.DisplayForm):
@@ -127,3 +129,28 @@ class Index(dexterity.DisplayForm):
             })
 
         return fields
+
+    def attachments(self):
+        brains = self.context.portal_catalog({
+            'portal_type': 'File',
+            'path': {
+                'query': '/'.join(self.context.getPhysicalPath()),
+                'depth': 1
+            }
+        })
+        sm = getSecurityManager()
+        result = []
+        for brain in brains:
+            obj = brain.getObject()
+            unit = obj.getFile()
+            icon = unit.getBestIcon()
+            filename = unit.filename
+            result.append({
+                'icon': icon,
+                'filename': filename,
+                'obj': obj,
+                'editable': sm.checkPermission(
+                    permissions.ModifyPortalContent, obj)
+            })
+        return result
+
