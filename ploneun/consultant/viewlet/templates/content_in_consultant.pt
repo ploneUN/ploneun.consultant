@@ -3,9 +3,10 @@
    <dl class="portalMessage info">
             <dt>Info</dt>
             <dd>This file is attached to Consultant : 
-                <span tal:define="consultant viewlet/consultant"
-                    tal:content="consultant/Title">
-                </span>
+                <a tal:define="consultant viewlet/consultant"
+                    tal:content="consultant/Title"
+                    tal:attributes="href consultant/absolute_url">
+                </a>
             </dd>
     </dl> 
 </div>
