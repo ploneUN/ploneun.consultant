@@ -2,9 +2,8 @@ from plone.indexer import indexer
 from DateTime import DateTime
 from collective import dexteritytextindexer
 from ploneun.consultant.content.consultant import IConsultant
-import p01.vocabulary.country
-import p01.vocabulary.language
 from five import grok
+from ploneun.consultant.vocabulary import resolve_value
 
 class CountryIndexer(grok.Adapter):
     grok.context(IConsultant)
@@ -14,8 +13,8 @@ class CountryIndexer(grok.Adapter):
         self.context = context
 
     def country(self):
-        country = p01.vocabulary.country.ISO3166Alpha2CountryVocabulary(
-                self.context).getTerm(self.context.country).title
+        country = resolve_value(self.context, self.context.country,
+                'ploneun.consultant.country')
         return country
 
     def languages(self):
@@ -24,15 +23,14 @@ class CountryIndexer(grok.Adapter):
         results = []
 
         for language in languages:
-            l = po1.vocabulary.language.ISO3166Alpha2CountryVocabulary(
-                    self.context).getTerm(self.language).title
-
+            l = resolve_value(self.context, language,
+                    'ploneun.consultant.languages')
             results.append(l)
 
         return " ".join(results)
 
     def __call__(self):
-        return self.country() + ' ' + self.language()
+        return self.country() + ' ' + self.languages()
 
 @indexer(IConsultant)
 def dobIndexer(obj):
