@@ -32,7 +32,7 @@ class CountryIndexer(grok.Adapter):
         return " ".join(results)
 
     def __call__(self):
-        return self.country() + ' ' + self.language()
+        return self.country() + ' ' + self.languages()
 
 @indexer(IConsultant)
 def dobIndexer(obj):
