@@ -44,7 +44,8 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             title=u'Brief description of consultant')
 
     dob = schema.Date(
-            title=u'Date of Birth')
+            title=u'Date of Birth',
+            required=False)
 
     gender = schema.Choice(
             title=u'Gender',
