@@ -83,14 +83,6 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             missing_value = None,
             )
 
-    functions = schema.List(
-            title=u'Job Functions',
-            value_type=schema.Choice(
-                vocabulary='ploneun.consultant.function'),
-            required=False,
-            missing_value = None,
-            )
-
 
     languages = schema.List(
             title=u'Languages',
