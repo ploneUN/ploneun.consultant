@@ -43,19 +43,13 @@ class IConsultant(form.Schema, IImageScaleTraversable):
     description = schema.Text(
             title=u'Brief description of consultant')
 
-    dob = schema.Date(
-            title=u'Date of Birth',
-            required=False)
 
     gender = schema.Choice(
             title=u'Gender',
             vocabulary = 'ploneun.consultant.gender'
             )
 
-    photo = NamedBlobImage(
-            title=u'Upload photo.',
-            required=False)
-
+    
     dexteritytextindexer.searchable('email')
     email = schema.TextLine(
             title=u'Email address')
@@ -73,6 +67,16 @@ class IConsultant(form.Schema, IImageScaleTraversable):
     street_address = schema.Text(
                 title=u'Street Address',
                 required=False,)
+
+
+    dexteritytextindexer.searchable('details')
+    details = RichText(
+            title=u'Details',
+            description=u'Details and notes on consultant such as work' 
+            ' experience.',
+            required=False
+            )
+
 
     country = schema.Choice(
             title=_(u'Country'),
@@ -98,17 +102,34 @@ class IConsultant(form.Schema, IImageScaleTraversable):
 #            required=False
 #    )
 
-    dexteritytextindexer.searchable('details')
-    details = RichText(
-            title=u'Details',
-            description=u'Details and notes on consultant such as work' 
-            ' experience.',
-            required=False
-            )
 
     #region =
 
     # industry (Generic)
     # job_function
+
+    # fieldsets for Optional Personal Details 
+
+    form.fieldset('Personal Details',
+                  label=_(u"Optional Personal Details"),
+                  fields=['dob', 'photo'],
+                  )
+
+    dob = schema.Date(
+            title=u'Date of Birth',
+            required=False)
+
+    photo = NamedBlobImage(
+            title=u'Upload photo.',
+            required=False)
+
+
+
+
+
+
+
+
+
 
 alsoProvides(IConsultant, IFormFieldProvider)
