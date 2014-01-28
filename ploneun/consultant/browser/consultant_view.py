@@ -58,12 +58,12 @@ class Index(dexterity.DisplayForm):
                 ])
             })
 
-        if self.context.years_experience:
-            fields.append({
-                'id': 'years_experience',
-                'title': 'Years of Experience',
-                'render': str(self.context.years_experience)
-            })
+#        if self.context.years_experience:
+#            fields.append({
+#                'id': 'years_experience',
+#                'title': 'Years of Experience',
+#                'render': str(self.context.years_experience)
+#            })
     
         languages = getattr(self.context, 'languages', [])
         if languages:

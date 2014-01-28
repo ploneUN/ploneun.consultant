@@ -101,10 +101,10 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             required=True
             )
 
-    years_experience = schema.Int(
-            title=u'Years of Experience',
-            required=False
-    )
+#    years_experience = schema.Int(
+#            title=u'Years of Experience',
+#            required=False
+#    )
 
     dexteritytextindexer.searchable('details')
     details = RichText(
