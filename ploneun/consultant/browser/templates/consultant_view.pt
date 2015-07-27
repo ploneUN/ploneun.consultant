@@ -18,10 +18,10 @@
         />
     </div>
 
-    <!--<tal:block repeat="field view/detail_fields">
+    <tal:block repeat="field view/detail_fields">
         <h3 tal:content="field/title">Date of Birth</h3>
         <div tal:content="structure field/render"></div>
-    </tal:block>-->
+    </tal:block>
 
     <h3>Contact Information</h3>
         <table class="vertical listing" summary="Contact Details">
