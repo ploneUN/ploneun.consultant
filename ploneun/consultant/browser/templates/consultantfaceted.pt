@@ -65,19 +65,21 @@
             <tal:block define="consultantview nocall:context/@@consultantfaceted">
 <div class="consultant-box">
     
-    <tal:block tal:define="scales item_obj/@@images;
-    thumbnail python: scales.scale('photo', width=144, height=128, direction='down')">
-     
-                                                                   
-     <img class="consultant-image" tal:condition="thumbnail"
-     tal:attributes="src thumbnail/url;
-                     width thumbnail/width;
-                     height thumbnail/height"/>
-
-     <img class="consultant-image" tal:condition="not:thumbnail" 
-       tal:attributes="src string:${context/portal_url}/++resource++ploneun.consultant/none.jpg"/>
-
-    </tal:block>
+    <tal:if tal:condition="python: hasattr(item_obj, 'photo')">
+        <tal:block tal:define="scales item_obj/@@images;
+        thumbnail python: scales.scale('photo', width=144, height=128, direction='down')">
+         
+                                                                       
+         <img class="consultant-image" tal:condition="thumbnail"
+         tal:attributes="src thumbnail/url;
+                         width thumbnail/width;
+                         height thumbnail/height"/>
+    
+         <img class="consultant-image" tal:condition="not:thumbnail" 
+           tal:attributes="src string:${context/portal_url}/++resource++ploneun.consultant/none.jpg"/>
+    
+        </tal:block>
+    </tal:if>
 
     <div class="consultant-title"><a tal:attributes="href item_url"
             tal:content="item_title_or_id"></a></div>
