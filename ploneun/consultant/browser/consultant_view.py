@@ -15,12 +15,12 @@ class Index(dexterity.DisplayForm):
     def detail_fields(self):
         fields = []
 
-        if self.context.dob:
-            fields.append({
-                'id': 'dob',
-                'title': 'Date of Birth',
-                'render': self.context.dob.strftime('%e %B %Y')
-            })
+        #if self.context.dob:
+        #    fields.append({
+        #        'id': 'dob',
+        #        'title': 'Date of Birth',
+        #        'render': self.context.dob.strftime('%e %B %Y')
+        #    })
 
         fields.append({
             'id': 'gender',
