@@ -10,7 +10,7 @@
     i18n_domain="ploneun.consultant">
 
     <includeDependencies package="." />
-    <grok:grok package="." />
+    <!-- <grok:grok package="." /> -->
     <i18n:registerTranslations directory="locales" />
 
     <include package=".behavior"/>
