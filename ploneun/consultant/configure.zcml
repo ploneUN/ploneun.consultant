@@ -15,6 +15,7 @@
 
     <include package=".behavior"/>
     <include package=".portlet"/>
+    <include package=".viewlet"/>
 
     <browser:resourceDirectory 
         name="ploneun.consultant"
