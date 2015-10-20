@@ -5,5 +5,7 @@
         <dependency>profile-plone.app.dexterity:default</dependency>
         <dependency>profile-plone.formwidget.contenttree:default</dependency>
         <dependency>profile-plone.app.relationfield:default</dependency>
+        <dependency>profile-collective.excelexport:default</dependency>
+        <dependency>profile-eea.facetednavigation:default</dependency>
     </dependencies>
 </metadata>

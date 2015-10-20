@@ -21,7 +21,8 @@
   <property name="klass">plone.dexterity.content.Container</property>
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
-     <element value="plone.app.content.interfaces.IReindexOnModify" />
+     <!-- commented out for csv export. just put back if needed, but not all.  -->
+     <!-- <element value="plone.app.content.interfaces.IReindexOnModify" />
      <element value="plone.multilingualbehavior.interfaces.IDexterityTranslatable"/>
      <element value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
      <element value="plone.app.versioningbehavior.behaviors.IVersionable"/>
@@ -29,7 +30,7 @@
      <element value="plone.app.dexterity.behaviors.metadata.IPublication"/>
      <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
      <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-     <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
+     <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" /> -->
      <element value="ploneun.consultant.behavior.jobfunction.IJobFunction" />
    </property>
 

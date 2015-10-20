@@ -36,7 +36,11 @@ setup(name='ploneun.consultant',
           'plone.app.versioningbehavior',
           'p01.vocabulary.country',
           'p01.vocabulary.language',
-          'inigo.redirecttocontainer'
+          'inigo.redirecttocontainer',
+          'collective.monkeypatcher',
+          'eea.facetednavigation',
+          'collective.excelexport',
+
           # -*- Extra requirements: -*-
       ],
       extras_require={
