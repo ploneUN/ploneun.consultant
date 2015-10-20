@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.2.13dev0 (oct 20,2015)
+-------------------
+
+- added export to csv for faceted view
+
+
 0.2.12 (unreleased)
 -------------------
 
