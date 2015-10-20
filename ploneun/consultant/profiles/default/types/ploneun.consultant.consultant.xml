@@ -21,7 +21,7 @@
   <property name="klass">plone.dexterity.content.Container</property>
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
-     <!-- commented out for csv export. just put back if needed, but not all.  -->
+     <!-- commented out for csv export. just put back needed items only.  -->
      <!-- <element value="plone.app.content.interfaces.IReindexOnModify" />
      <element value="plone.multilingualbehavior.interfaces.IDexterityTranslatable"/>
      <element value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
