@@ -26,6 +26,7 @@ from zope import schema
 from zope.interface import alsoProvides
 
 from ploneun.consultant import MessageFactory as _
+from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 
 
 # Interface class; used to define content-type schema.
@@ -69,13 +70,20 @@ class IConsultant(form.Schema, IImageScaleTraversable):
                 required=False,)
 
 
+    # dexteritytextindexer.searchable('details')
+    # details = RichText(
+    #         title=u'Details',
+    #         description=u'Details and notes on consultant such as work' 
+    #         ' experience.',
+    #         required=False
+    #         )
+
     dexteritytextindexer.searchable('details')
-    details = RichText(
-            title=u'Details',
-            description=u'Details and notes on consultant such as work' 
-            ' experience.',
-            required=False
-            )
+    form.widget(details=WysiwygFieldWidget)
+    details = schema.Text(title=u'Details',
+             description=u'Details and notes on consultant such as work' 
+             ' experience.',
+             required=False)
 
 
     country = schema.Choice(
