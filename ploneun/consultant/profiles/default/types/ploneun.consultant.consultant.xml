@@ -31,7 +31,7 @@
      <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
      <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
      <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" /> -->
-     <element value="ploneun.consultant.behavior.jobfunction.IJobFunction" />
+     <!--element value="ploneun.consultant.behavior.jobfunction.IJobFunction" /-->
    </property>
 
   <!-- View information -->
