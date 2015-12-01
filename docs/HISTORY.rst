@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.13dev1 (Dec 1, 2015)
+-------------------
+- changed richtext field to WysiwygFieldWidget, comment out jobfunctions behavior
+
+
 0.2.13dev0 (oct 20,2015)
 -------------------
 
