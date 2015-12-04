@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.2.13dev2 (Dec 4, 2015)
+-------------------
+- adjustment for consultant template
+
 0.2.13dev1 (Dec 1, 2015)
 -------------------
 - changed richtext field to WysiwygFieldWidget, comment out jobfunctions behavior
