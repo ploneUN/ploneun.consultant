@@ -21,7 +21,7 @@
   <metal:content-core define-macro="content-core">
   <div tal:define="view nocall:view">
     
-    <div tal:define="photo nocall:context/photo"
+    <div style="margin-bottom: 10px;" tal:define="photo nocall:context/photo"
       tal:condition="nocall:photo">
       <img tal:define="scale context/@@images"
         tal:replace="structure python: scale.scale('photo', scale='mini').tag()"/>
