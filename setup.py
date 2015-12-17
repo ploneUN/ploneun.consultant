@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2.13dev2'
+version = '0.2.13dev3'
 
 setup(name='ploneun.consultant',
       version=version,
