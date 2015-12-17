@@ -1,5 +1,8 @@
 Changelog
 =========
+0.2.13dev3 (Dec 17, 2015)
+___________________
+- changed details field from WysiwygFieldWidget to RichText
 
 0.2.13dev2 (Dec 4, 2015)
 -------------------
