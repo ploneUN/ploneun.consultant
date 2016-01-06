@@ -1,5 +1,10 @@
 Changelog
 =========
+
+0.2.13dev4 (Jan 6, 2015)
+___________________
+- removed unnecessary lines on consultant content and fixed bug on details field: richtext not working
+
 0.2.13dev3 (Dec 17, 2015)
 ___________________
 - changed details field from WysiwygFieldWidget to RichText
