@@ -48,9 +48,17 @@
             </table>
           </td>
         </tr>
-        <tr>
+
+        <tr tal:define="details context/details;
+                        richtext python: hasattr(details, 'output')">
           <td class="row-header">Details</td>
-          <td tal:content="structure view/w/details/render"/>
+
+          <td tal:condition="richtext" 
+            tal:content="structure details/output"/>
+
+          <td tal:condition="python: not richtext" 
+            tal:content="structure details"/>
+
         </tr>
         <tr class="visualNoPrint">
           <td class="row-header">Attachments</td>
