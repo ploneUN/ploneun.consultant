@@ -28,8 +28,23 @@ from zope.interface import alsoProvides
 from ploneun.consultant import MessageFactory as _
 #from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 
+from raptus.autocompletewidget.widget import AutocompleteSelectionWidget
+
+from zope.component import getUtility
+
+from clkss.location.interfaces import ILocationUtility
+from z3c.saconfig import named_scoped_session
+from sqlalchemy.orm import exc as orm_exc
+
+from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
+
 
 # Interface class; used to define content-type schema.
+
+def supplier_value(self):
+    catalog = self.catalog
+    brains = catalog.unrestrictedSearchResults(object_provides=ILocationUtility.__identifier__)
+    return brains
 
 class IConsultant(form.Schema, IImageScaleTraversable):
     """
@@ -70,12 +85,18 @@ class IConsultant(form.Schema, IImageScaleTraversable):
                 required=False,)
 
     dexteritytextindexer.searchable('details')
-    details = RichText(
-            title=u'Details',
-            description=u'Details and notes on consultant such as work' 
-            ' experience.',
-            required=False
-            )
+    # details = RichText(
+    #         title=u'Details',
+    #         description=u'Details and notes on consultant such as work' 
+    #         ' experience.',
+    #         required=False
+    #         )
+
+    form.widget(details=WysiwygFieldWidget)
+    details = schema.Text(title=u'Details',
+             description=u'Details and notes on consultant such as work' 
+             ' experience.',
+             required=False)
 
     country = schema.Choice(
             title=_(u'Country'),
@@ -85,7 +106,6 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             required=True,
             missing_value = None,
             )
-
 
     languages = schema.List(
             title=u'Languages',
@@ -121,14 +141,5 @@ class IConsultant(form.Schema, IImageScaleTraversable):
     photo = NamedBlobImage(
             title=u'Upload photo.',
             required=False)
-
-
-
-
-
-
-
-
-
 
 alsoProvides(IConsultant, IFormFieldProvider)
