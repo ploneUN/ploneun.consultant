@@ -74,7 +74,7 @@ class IConsultant(form.Schema, IImageScaleTraversable):
     #         required=False
     #         )
 
-    form.widget(details=WysiwygFieldWidget)
+    form.widget(details='plone.app.z3cform.wysiwyg.WysiwygFieldWidget')
     details = schema.Text(title=u'Details',
              description=u'Details and notes on consultant such as work' 
              ' experience.',
