@@ -27,6 +27,7 @@ from zope.interface import alsoProvides
 
 from ploneun.consultant import MessageFactory as _
 from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 # Interface class; used to define content-type schema.
 
@@ -125,3 +126,15 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             required=False)
 
 alsoProvides(IConsultant, IFormFieldProvider)
+
+class consultanteditform(dexterity.EditForm):
+    grok.context(IConsultant)
+    template = ViewPageTemplateFile('templates/consultanteditform.pt')
+
+    def is_richtext(self):
+        details = self.context.details
+        if hasattr(details, 'output'):
+            return True  
+
+
+
