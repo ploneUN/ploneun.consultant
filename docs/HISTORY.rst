@@ -1,5 +1,9 @@
 Changelog
 =========
+0.2.13dev5 (Jan 8, 2016)
+___________________
+- fixed richtext output for details field on edit view
+
 
 0.2.13dev4 (Jan 6, 2015)
 ___________________
