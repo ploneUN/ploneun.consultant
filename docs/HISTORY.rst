@@ -1,5 +1,9 @@
 Changelog
 =========
+0.2.13dev7 (march 29, 2016)
+-------------------
+- added function to get consultants and make it as url params, added link - send consultants cv, added function for autocomplete, added associated template
+
 0.2.13dev5 (Jan 8, 2016)
 ___________________
 - fixed richtext output for details field on edit view
