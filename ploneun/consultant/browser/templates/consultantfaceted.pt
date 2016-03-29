@@ -63,7 +63,7 @@
                                        item_samedate python: (item_end - item_start &lt; 1) if item_type == 'Event' else False">
                 <metal:block define-slot="entry">
                     <tal:block>
-                        <div class="consultant-box">
+                        <div class="consultant-box" tal:condition="python: item_type == 'ploneun.consultant.consultant'">
                             
                             <tal:if tal:condition="python: hasattr(item_obj, 'photo')">
                                 <tal:block tal:define="scales item_obj/@@images;
