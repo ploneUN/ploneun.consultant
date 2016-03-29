@@ -7,7 +7,6 @@
       metal:use-macro="context/main_template/macros/master">
 <head>
 
-
 </head>
 <body>
 
@@ -15,7 +14,8 @@
 <metal:block define-macro="content-core"
                     tal:define="kssClassesView context/@@kss_field_decorator_view;
                                 getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
-                                templateId template/getId">
+                                templateId template/getId;
+                                consultantview nocall:context/@@consultantfaceted">
 
     <metal:listingmacro define-macro="listing">
     <tal:foldercontents define="contentFilter contentFilter|request/contentFilter|nothing;
@@ -43,67 +43,75 @@
 
         <div metal:define-slot="entries">
             <tal:entry tal:repeat="item batch" metal:define-macro="entries">
-            <tal:block tal:define="item_url item/getURL|item/absolute_url;
-                                   item_id item/getId|item/id;
-                                   item_title_or_id item/pretty_title_or_id;
-                                   item_description item/Description;
-                                   item_type item/portal_type;
-                                   item_type_title item/Type;
-                                   item_modified item/ModificationDate;
-                                   item_created item/CreationDate;
-                                   item_icon python:plone_view.getIcon(item);
-                                   item_obj item/getObject;
-                                   item_type_class python:'contenttype-' + normalizeString(item_type);
-                                   item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
-                                   item_wf_state_class python:'state-' + normalizeString(item_wf_state);
-                                   item_creator item/Creator;
-                                   item_start item/start|item/StartDate|nothing;
-                                   item_end item/end|item/EndDate|nothing;
-                                   item_sametime python: item_start == item_end;
-                                   item_samedate python: (item_end - item_start &lt; 1) if item_type == 'Event' else False">
-            <metal:block define-slot="entry">
-            <tal:block define="consultantview nocall:context/@@consultantfaceted">
-<div class="consultant-box">
-    
-    <tal:if tal:condition="python: hasattr(item_obj, 'photo')">
-        <tal:block tal:define="scales item_obj/@@images;
-        thumbnail python: scales.scale('photo', width=144, height=128, direction='down')">
-         
-                                                                       
-         <img class="consultant-image" tal:condition="thumbnail"
-         tal:attributes="src thumbnail/url;
-                         width thumbnail/width;
-                         height thumbnail/height"/>
-    
-         <img class="consultant-image" tal:condition="not:thumbnail" 
-           tal:attributes="src string:${context/portal_url}/++resource++ploneun.consultant/none.jpg"/>
-    
-        </tal:block>
-    </tal:if>
-
-    <div class="consultant-title"><a tal:attributes="href item_url"
-            tal:content="item_title_or_id"></a></div>
-
-   <div tal:content="python:consultantview.trim_text(item_description)" class="consultant-description discreet">
-   </div>
-
-
-</div>
-
-
-
-
-
-</tal:block>
-            </metal:block>
-            </tal:block>
+                <tal:block tal:define="item_url item/getURL|item/absolute_url;
+                                       item_id item/getId|item/id;
+                                       item_title_or_id item/pretty_title_or_id;
+                                       item_description item/Description;
+                                       item_type item/portal_type;
+                                       item_type_title item/Type;
+                                       item_modified item/ModificationDate;
+                                       item_created item/CreationDate;
+                                       item_icon python:plone_view.getIcon(item);
+                                       item_obj item/getObject;
+                                       item_type_class python:'contenttype-' + normalizeString(item_type);
+                                       item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
+                                       item_wf_state_class python:'state-' + normalizeString(item_wf_state);
+                                       item_creator item/Creator;
+                                       item_start item/start|item/StartDate|nothing;
+                                       item_end item/end|item/EndDate|nothing;
+                                       item_sametime python: item_start == item_end;
+                                       item_samedate python: (item_end - item_start &lt; 1) if item_type == 'Event' else False">
+                <metal:block define-slot="entry">
+                    <tal:block>
+                        <div class="consultant-box">
+                            
+                            <tal:if tal:condition="python: hasattr(item_obj, 'photo')">
+                                <tal:block tal:define="scales item_obj/@@images;
+                                thumbnail python: scales.scale('photo', width=144, height=128, direction='down')">
+                                 
+                                                                                               
+                                 <img class="consultant-image" tal:condition="thumbnail"
+                                 tal:attributes="src thumbnail/url;
+                                                 width thumbnail/width;
+                                                 height thumbnail/height"/>
+                            
+                                 <img class="consultant-image" tal:condition="not:thumbnail" 
+                                   tal:attributes="src string:${context/portal_url}/++resource++ploneun.consultant/none.jpg"/>
+                            
+                                </tal:block>
+                            </tal:if>
+                        
+                            <div class="consultant-title"><a tal:attributes="href item_url"
+                                    tal:content="item_title_or_id"></a></div>
+                        
+                           <div tal:content="python:consultantview.trim_text(item_description)" class="consultant-description discreet">
+                           </div>
+                        
+                        
+                        </div>
+        
+        
+        
+        
+        
+                       </tal:block>
+                    </metal:block>
+                </tal:block>
             </tal:entry>
         </div>
 
         <div class="visualClear"></div>
 
         <div metal:use-macro="context/batch_macros/macros/navigation" />
-
+        
+        <tal:block tal:define="consultants python:consultantview.get_consultants(batch)">
+            <a tal:attributes="href string:${context/absolute_url}/send-email-files?${consultants}">Send Consultant's CV</a>
+        </tal:block>
+        
+        
+        
+        <!--<span tal:define="consultantview nocall:context/@@consultantfaceted; dummy consultantview/test"></span>-->
+        
     </tal:listing>
     <metal:empty metal:define-slot="no_items_in_listing">
         <p class="discreet"
