@@ -65,7 +65,7 @@
                     <tal:block>
                         <div class="consultant-box" tal:condition="python: item_type == 'ploneun.consultant.consultant'">
                             
-                            <tal:if tal:condition="python: hasattr(item_obj, 'photo')">
+                            <!--<tal:if tal:condition="python: hasattr(item_obj, 'photo')">
                                 <tal:block tal:define="scales item_obj/@@images;
                                 thumbnail python: scales.scale('photo', width=144, height=128, direction='down')">
                                  
@@ -79,7 +79,7 @@
                                    tal:attributes="src string:${context/portal_url}/++resource++ploneun.consultant/none.jpg"/>
                             
                                 </tal:block>
-                            </tal:if>
+                            </tal:if>-->
                         
                             <div class="consultant-title"><a tal:attributes="href item_url"
                                     tal:content="item_title_or_id"></a></div>
