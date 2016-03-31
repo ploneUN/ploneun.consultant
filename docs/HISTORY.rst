@@ -1,5 +1,9 @@
 Changelog
 =========
+0.2.13dev9 (march 31, 2016)
+-------------------
+-added iregion behavior
+
 0.2.13dev8 (march 30, 2016)
 -------------------
 - revised display of thumb image
