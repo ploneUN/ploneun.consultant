@@ -9,6 +9,8 @@ from zope.interface import invariant, Invalid
 
 from z3c.form import group, field
 
+from z3c.form.browser import checkbox
+
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedImage, NamedFile
 from plone.namedfile.field import NamedBlobImage, NamedBlobFile
@@ -98,6 +100,10 @@ class IConsultant(form.Schema, IImageScaleTraversable):
                 ),
             required=True
             )
+
+    prevworked_ilo = schema.Bool(
+            title=u'Previously worked with ILO',
+            required=False)
 
 #    years_experience = schema.Int(
 #            title=u'Years of Experience',
