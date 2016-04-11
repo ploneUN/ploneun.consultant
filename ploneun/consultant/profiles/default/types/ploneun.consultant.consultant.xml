@@ -31,7 +31,7 @@
      <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
      <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
      <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" /> -->
-     <element value="ilo.extenders.behavior.evalworkdetails.IEvalWorkDetails" />
+     <!--element value="ilo.extenders.behavior.evalworkdetails.IEvalWorkDetails" /-->
      <element value="ilo.extenders.behavior.iloregions.IILORegions" />
      <element value="ilo.extenders.behavior.subjectexpertise.ISubjectExpertise" />
    </property>
