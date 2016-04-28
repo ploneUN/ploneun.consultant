@@ -111,6 +111,7 @@
         <div class="visualClear"></div>
 
         <div metal:use-macro="context/batch_macros/macros/navigation" />
+        <br />
         <p>
             <tal:block tal:define="consultants python:consultantview.get_consultants(batch)">
                 <a style="font-size:12px;padding: 6px" class="button" tal:attributes="href string:${context/absolute_url}/send-email-files?${consultants}">
