@@ -1,5 +1,9 @@
 Changelog
 =========
+0.2.15 - may 19
+-----------
+released for production
+
 0.2.13dev9 (march 31, 2016)
 -------------------
 -added iregion behavior
