@@ -35,4 +35,9 @@
         <indexed_attr value="ploneun_years_experience"/>
     </index>
     <column value="ploneun_years_experience"/>
+
+    <index name="Previously worked with ILO" meta_type="FieldIndex">
+        <indexed_attr value="prevworked_ilo_indexer"/>
+    </index>
+    <column value="prevworked_ilo_indexer"/>
 </object>

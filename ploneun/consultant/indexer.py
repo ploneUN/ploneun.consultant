@@ -74,10 +74,15 @@ def ploneUNGenderIndexer(obj):
     return obj.gender
 grok.global_adapter(ploneUNGenderIndexer, name='ploneun_gender')
 
-
 @indexer(IConsultant)
 def ploneUNExperience(obj):
     if obj.years_experience is None:
         return None
     return obj.years_experience
 grok.global_adapter(ploneUNExperience, name='ploneun_years_experience')
+
+@indexer(IConsultant)
+def prevworked_ilo_indexer(obj):
+    if obj.prevworked_ilo:
+        return "Previously worked with ILO"
+grok.global_adapter(prevworked_ilo_indexer, name='prevworked_ilo_indexer')
