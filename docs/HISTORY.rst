@@ -1,5 +1,9 @@
 Changelog
 =========
+0.2.16-may 27
+----------
+changes on consultants field for faceted
+
 0.2.15 - may 19
 -----------
 released for production
