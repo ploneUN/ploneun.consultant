@@ -5,15 +5,19 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.component import getUtility
 from z3c.formwidget.query.interfaces import IQuerySource
 
-class PrevWorkedIlo(grok.GlobalUtility):
-    grok.name('ploneun.consultant.prevworked_ilo')
+class work_experience(grok.GlobalUtility):
+    grok.name('ploneun.consultant.work_experience')
     grok.implements(IVocabularyFactory)
 
     items = [
         (
-         "Previously worked with ILO",
-         "Previously worked with ILO",
+         'Previously worked with ILO',
+         u'Worked for EVAL',
         ),
+        (
+         'Has a notice',
+         u'Consultants with a notice',
+        )
         ]
 
     def __call__(self, context):

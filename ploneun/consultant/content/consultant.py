@@ -30,6 +30,8 @@ from zope.interface import alsoProvides
 from ploneun.consultant import MessageFactory as _
 from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from z3c.form.browser.checkbox import CheckBoxFieldWidget
+
 
 # Interface class; used to define content-type schema.
 
@@ -101,17 +103,27 @@ class IConsultant(form.Schema, IImageScaleTraversable):
             required=True
             )
 
-    prevworked_ilo = schema.Bool(
-            title=u'Previously worked with ILO',
-            required=False)
+    form.widget(work_experience=CheckBoxFieldWidget)
+    work_experience = schema.List(
+            title=u'Work experience with EVAL',
+            value_type=schema.Choice(
+                values=(u'Previously worked with ILO', u'Has a notice')
+                ),
+            required=False
+            )
 
-#    years_experience = schema.Int(
-#            title=u'Years of Experience',
-#            required=False
-#    )
+    # prevworked_ilo = schema.Bool(
+    #         title=u'Previously worked with ILO',
+    #         required=False)
 
+    # has_notice = schema.Bool(
+    #         title=u'Has a notice',
+    #         required=False)
 
-    #region =
+    # years_experience = schema.Int(
+    #         title=u'Years of Experience',
+    #         required=False
+    # )
 
     # industry (Generic)
     # job_function

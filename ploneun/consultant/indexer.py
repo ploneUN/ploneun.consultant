@@ -54,6 +54,13 @@ def ploneUNLanguageIndexer(obj):
 grok.global_adapter(ploneUNLanguageIndexer, name='ploneun_languages')
 
 @indexer(IConsultant)
+def ploneUNWorkExperienceIndexer(obj):
+    if obj.work_experience is None:
+        return None
+    return obj.work_experience
+grok.global_adapter(ploneUNWorkExperienceIndexer, name='ploneun_work_experience')
+
+@indexer(IConsultant)
 def ploneUNThemeIndexer(obj):
     if obj.themes is None:
         return None
@@ -81,8 +88,14 @@ def ploneUNExperience(obj):
     return obj.years_experience
 grok.global_adapter(ploneUNExperience, name='ploneun_years_experience')
 
-@indexer(IConsultant)
-def prevworked_ilo_indexer(obj):
-    if obj.prevworked_ilo:
-        return "Previously worked with ILO"
-grok.global_adapter(prevworked_ilo_indexer, name='prevworked_ilo_indexer')
+# @indexer(IConsultant)
+# def prevworked_ilo_indexer(obj):
+#     if obj.prevworked_ilo:
+#         return "Previously worked with ILO"
+# grok.global_adapter(prevworked_ilo_indexer, name='prevworked_ilo_indexer')
+
+# @indexer(IConsultant)
+# def has_notice_indexer(obj):
+#     if obj.has_notice:
+#         return "Has a notice"
+# grok.global_adapter(has_notice_indexer, name='has_notice_indexer')
