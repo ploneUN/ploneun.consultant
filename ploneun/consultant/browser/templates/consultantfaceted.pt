@@ -40,6 +40,14 @@
                         pas_member context/@@pas_member;
                         plone_view context/@@plone;">
     <tal:listing condition="batch">
+        <p>
+            <tal:block tal:define="consultants python:consultantview.get_consultants(batch)">
+                <a style="font-size:12px;padding: 6px" class="button" tal:attributes="href string:${context/absolute_url}/send-email-files?${consultants}">
+                    <i class="fa fa-share-square" aria-hidden="true"></i>
+                    Send Consultant's CV
+                </a>
+            </tal:block>
+        </p>
 
         <div metal:define-slot="entries">
             <tal:entry tal:repeat="item batch" metal:define-macro="entries">
@@ -61,14 +69,7 @@
                                        item_end item/end|item/EndDate|nothing;
                                        item_sametime python: item_start == item_end;
                                        item_samedate python: (item_end - item_start &lt; 1) if item_type == 'Event' else False">
-            <p>
-                <tal:block tal:define="consultants python:consultantview.get_consultants(batch)">
-                    <a style="font-size:12px;padding: 6px" class="button" tal:attributes="href string:${context/absolute_url}/send-email-files?${consultants}">
-                        <i class="fa fa-share-square" aria-hidden="true"></i>
-                        Send Consultant's CV
-                    </a>
-                </tal:block>
-            </p>
+            
                 <metal:block define-slot="entry">
                     <tal:block>
                         <div class="consultant-box" tal:condition="python: item_type == 'ploneun.consultant.consultant'">
