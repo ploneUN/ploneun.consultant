@@ -1,5 +1,7 @@
 Changelog
 =========
+0.2.18 - july 21
+-remove export to csv on actions
 
 0.2.17 - july 20
 --------
