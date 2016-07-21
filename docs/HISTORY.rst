@@ -1,5 +1,10 @@
 Changelog
 =========
+
+0.2.17 - july 20
+--------
+adjusted send cv link and send cv codes 
+
 0.2.16-may 27
 ----------
 changes on consultants field for faceted
