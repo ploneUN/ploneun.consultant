@@ -10,7 +10,7 @@
 <head>
       <metal:slot fill-slot="javascript_head_slot">
             <script>
-                  $(document).ready(function(){
+                  /*$(document).ready(function(){
                         var curr_url = $('span#curr_url').html()+'/consultant_cv_recipients';
                         var jsonObj = $.parseJSON($('span#default_recipients').html());
                         
@@ -23,7 +23,7 @@
                               config['prePopulate'] = jsonObj['prePopulate'];
                         }
                         $('textarea#email-recipients').tokenInput(curr_url, config);
-                  });
+                  });*/
             </script>
         </metal:slot>
 </head>
