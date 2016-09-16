@@ -45,28 +45,52 @@
     <h2>Email Function</h2>
     <form method="post">
       <div class="field">
-            <label>To:</label>
-            <textarea id="email-recipients" name="email-recipients" tal:content="view/submitted_recipients"></textarea>
+            
+            <label>To:
+                  <span class="formHelp">Type valid email addresses below.  Separate email adresses with a comma (john@domain.com,joe@domain.com)</span>               
+
+            </label>
+            <dl class ="portalMessage error" tal:define="results python: view.error_message('email-recipients')" tal:condition="python: results['status']">
+                  <dt>Error</dt>
+                  <dd tal:content="results/msg"></dd>
+            </dl>
+            <textarea id="email-recipients" name="email-recipients" required tal:content="python: view.form_values('email-recipients')"></textarea>
+            
       </div>
       <div class="field">
+            
             <label>CC:
-                  <span class="formHelp">Use comma to separate email addresses</span>
+                  <span class="formHelp">Type valid email addresses below.  Separate email adresses with a comma (john@domain.com,joe@domain.com)</span>
             </label>
-            <textarea id="email-cc" name="email-cc"></textarea>
+            <dl class ="portalMessage error" tal:define="results python: view.error_message('email-cc')" tal:condition="python: results['status']">
+                  <dt>Error</dt>
+                  <dd tal:content="results/msg"></dd>
+            </dl>
+            <textarea id="email-cc" name="email-cc" tal:content="python: view.form_values('email-cc')"></textarea>
       </div>      
       <!--<label>CC:</label><br/>
       <tal:entry tal:repeat="item batch">
           <input type="checkbox" name="cc_consultant" tal:attributes="value item/UID"/><span tal:content="item/pretty_title_or_id"></span><br/>
       </tal:entry>-->
       <div class="field">
-            <label>Subject</label>
+            
+            <label>Subject:</label>
+            <dl class ="portalMessage error" tal:define="results python: view.error_message('email-subject')" tal:condition="python: results['status']">
+                  <dt>Error</dt>
+                  <dd tal:content="results/msg"></dd>
+            </dl>
             <div class="fieldErrorBox"></div>
-            <input type="text" name="email-subject"/>
+            <input type="text" name="email-subject" required tal:attributes="value python: view.form_values('email-subject')"/>
       </div>
       <div class="field">
+            
             <label>Message:</label>
+            <dl class ="portalMessage error" tal:define="results python: view.error_message('email-msg')" tal:condition="python: results['status']">
+                  <dt>Error</dt>
+                  <dd tal:content="results/msg"></dd>
+            </dl>
             <div class="fieldErrorBox"></div>
-            <textarea rows="4" cols="25" name="email-msg"></textarea>
+            <textarea rows="4" cols="25" name="email-msg" required tal:content="python: view.form_values('email-msg')"></textarea>
       </div>
       <div class="formControls">
             <input type="submit" value="Send Email"/>      

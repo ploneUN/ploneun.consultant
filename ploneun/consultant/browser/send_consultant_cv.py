@@ -65,7 +65,7 @@ class send_consultant_cv(grok.View):
             if self.request.form:
                 form = self.request.form
                 mark = 0
-                recipients = None
+                recipients = []
                 subject = ''
                 message = ''
                 consultants = []
@@ -74,17 +74,25 @@ class send_consultant_cv(grok.View):
                 
                 if 'email-recipients' in form:
                     if not form['email-recipients']:
-                        statusmessages.add('Recipients is required', type='error')
+                        #statusmessages.add('Recipients is required', type='error')
                         mark += 1
-                    recipients = form['email-recipients']
+                    recipients_raw = form['email-recipients'].replace('\r', ',').replace('\n', '').split(',')
+                    recipients_raw2 = []
+                    for rec in recipients_raw or []:
+                        if validateaddress(rec.strip()):
+                            recipients.append(rec.strip())
+                    if not recipients:
+                        #statusmessages.add('At least one recipient is required.', type='error')
+                        mark += 1
+                        return
                 if 'email-subject' in form:
                     if not form['email-subject']:
-                        statusmessages.add('Subject is required', type='error')
+                        #statusmessages.add('Subject is required', type='error')
                         mark += 1
                     subject = form['email-subject']
                 if 'email-msg' in form:
                     if not form['email-msg']:
-                        statusmessages.add('Message is required', type='error')
+                        #statusmessages.add('Message is required', type='error')
                         mark += 1
                     message = form['email-msg']
                 
@@ -104,30 +112,22 @@ class send_consultant_cv(grok.View):
                     adapters = getAdapters((self.context,), IPDFEmailSource)
                     if recipients:
                         
-                        for recipient in recipients.split(','):
-                            expanded = False
-                            recipient = recipient.strip()
-                            #for name, adapter in adapters:
-                            #    
-                            #    if adapter.can_expand(recipient):
-                            #        expanded_recipients += adapter.expand_value(recipient)
-                            #        expanded = True
-                            #        break
+                        #for recipient in recipients.split(','):
+                        #    expanded = False
+                        #    recipient = recipient.strip()
                             
-                            #if not expanded:
-                            #    expanded_recipients.append(recipient)
                             
-                            can_expand = self.can_expand(recipient)
-                            if can_expand:
-                                if can_expand == 'user':
-                                    expanded_recipients += self.get_user(recipient)
-                                elif can_expand == 'group':
-                                    expanded_recipients += self.get_group(recipient)
+                        #    can_expand = self.can_expand(recipient)
+                        #    if can_expand:
+                        #        if can_expand == 'user':
+                        #            expanded_recipients += self.get_user(recipient)
+                        #        elif can_expand == 'group':
+                        #            expanded_recipients += self.get_group(recipient)
                                 
                             
                             
                         self.send_email(
-                            recipients=list(set(expanded_recipients)),
+                            recipients=list(set(recipients)),
                             subject=subject,
                             message=message,
                             cc=cc_recipients
@@ -182,7 +182,8 @@ class send_consultant_cv(grok.View):
                 
                 
         msg['To'] = ','.join(recipients)
-        msg['cc'] = ','.join(cc)
+        if cc:
+            msg['cc'] = ','.join(cc)
         
         mailhost.send(msg.as_string())
         
@@ -238,6 +239,70 @@ class send_consultant_cv(grok.View):
                 user.getProperty('email')
             ))
         return list(set(values))
+    
+    def error_message(self, form_name=''):
+        results = {'status':False, 'msg':'', 'type':''}
+        if self.request.method == 'POST':
+            if form_name == 'email-recipients':
+                
+                recipients = self.request.form[form_name]
+                if not recipients:
+                    results['status'] = True
+                    results['msg'] = 'At least one recipient is required.'
+                    results['type'] = 'Error'
+                recipients = recipients.replace('\r', ',').replace('\n', '').split(',')
+                for rec in recipients or []:
+                    if not validateaddress(rec.strip()):
+                        results['status'] = True
+                        results['msg'] = 'One of the email addresses is invalid.'
+                        results['type'] = 'Error'
+                        break
+            
+            if form_name == 'email-cc':
+                data = self.request.form[form_name]
+                if data:
+                    data = data.replace('\r', ',').replace('\n', '').split(',')
+                    for dat in data or []:
+                        if not validateaddress(dat.strip()):
+                            results['status'] = True
+                            results['msg'] = 'One of the email addresses is invalid.'
+                            results['type'] = 'Error'
+                            break
+            
+            if form_name == 'email-subject':
+                if not self.request.form[form_name]:
+                    results['status'] = True
+                    results['msg'] = 'Please provide subject for this email.'
+                    results['type'] = 'Error'
+                    
+            if form_name == 'email-msg':
+                if not self.request.form[form_name]:
+                    results['status'] = True
+                    results['msg'] = 'Please provide message for this email.'
+                    results['type'] = 'Error'
+                    
+            
+            if form_name == 'consultants_name':
+                if not 'consultants_name' in self.request.form:
+                    results['status'] = True
+                    results['msg'] = 'Please select at least one consultant.'
+                    results['type'] = 'Error'
+        return results
+    
+    def form_values(self, form_name=''):
+        form = self.request.form
+        if form:
+            if form.has_key(form_name):
+                return form[form_name]
+    
+    def isChecked(self, uid=''):
+        form = self.request.form
+        if self.request.method == 'POST':
+            if 'consultants_name' in form:
+                
+                if uid in form['consultants_name']:
+                    return True
+                return False
     
     
     
