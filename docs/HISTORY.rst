@@ -1,5 +1,7 @@
 Changelog
 =========
+0.2.21v2 -sept 16
+-disabled js
 0.2.21 - sept 16
 -revised csv code 
 
