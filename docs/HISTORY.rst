@@ -1,5 +1,11 @@
 Changelog
 =========
+0.2.21 - sept 16
+-revised csv code 
+
+0.2.20 - sept 16
+-changed filename of attachment
+
 0.2.19 - sept 16
 --------
 - modify to field on send consultant cv
