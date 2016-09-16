@@ -1,5 +1,9 @@
 Changelog
 =========
+0.2.19 - sept 16
+--------
+- modify to field on send consultant cv
+
 0.2.18 - july 21
 -remove export to csv on actions
 
