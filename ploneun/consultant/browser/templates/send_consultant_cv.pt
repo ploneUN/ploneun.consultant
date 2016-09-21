@@ -46,7 +46,7 @@
     <form method="post">
       <div class="field">
             
-            <label>To:
+            <label>To:<span class="required horizontal" title="Required">&nbsp;</span>
                   <span class="formHelp">Type valid email addresses below.  Separate email adresses with a comma (john@domain.com,joe@domain.com)</span>               
 
             </label>
@@ -74,7 +74,7 @@
       </tal:entry>-->
       <div class="field">
             
-            <label>Subject:</label>
+            <label>Subject:<span class="required horizontal" title="Required">&nbsp;</span></label>
             <dl class ="portalMessage error" tal:define="results python: view.error_message('email-subject')" tal:condition="python: results['status']">
                   <dt>Error</dt>
                   <dd tal:content="results/msg"></dd>
@@ -84,7 +84,7 @@
       </div>
       <div class="field">
             
-            <label>Message:</label>
+            <label>Message:<span class="required horizontal" title="Required">&nbsp;</span></label>
             <dl class ="portalMessage error" tal:define="results python: view.error_message('email-msg')" tal:condition="python: results['status']">
                   <dt>Error</dt>
                   <dd tal:content="results/msg"></dd>
