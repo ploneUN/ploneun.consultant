@@ -1,5 +1,8 @@
 Changelog
 =========
+0.2.21v3 - sept 21
+-added red mark for required field
+
 0.2.21v2 -sept 16
 -disabled js
 0.2.21 - sept 16
