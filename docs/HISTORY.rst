@@ -1,5 +1,8 @@
 Changelog
 =========
+0.2.22 - sept 26
+-changed file creation location to /tmp
+
 0.2.21v3 - sept 21
 -added red mark for required field
 
